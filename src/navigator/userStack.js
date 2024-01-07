@@ -10,28 +10,14 @@ const UserStack = () => {
     <Stack.Navigator 
         initialRouteName='home'
         screenOptions={{headerShown:false}}>
-        <Stack.Screen
-            name = 'home'
-            component={HomePage}
-        
-        />
-        <Stack.Screen
-            name='profile'
-            component={ProfilePage}
-        
-        
-        />
+          <Stack.Screen
+            name = 'Home'
+            component={HomePage}/>
+          <Stack.Screen
+            name= 'Profile'
+            component={ProfilePage}/>
     </Stack.Navigator>    
-        
-
-
-        
-        
-
-
-    
-    
-    
+          
   )
 }
 

@@ -1,26 +1,27 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import {NavigationContainer} from '@react-navigation/native';
+
 import AuthStack from './authStack';
 import UserStack from './userStack';
-const Rootnavigation = () => {
+
+
+const rootnavigation = () => {
   
         const isAuth = false
   
   
     return (
-    <NavigationContainer>
-        
-        {
-            !isAuth//yani isAuth false ise biz false olarak başlattığımız için boolean yapısını bu şekilde kullandık.
-                ?<AuthStack/>//buradaki '?' isAult false mu sorusuna cevap evet ise demektir.
-                :<UserStack/>//':' ile de cevap hayır ise demektir.
-        }
-
-    </NavigationContainer>
-  )
+        <NavigationContainer>
+            {!isAuth 
+                ?<AuthStack/>
+                :<UserStack/>
+            }
+        </NavigationContainer>
+    )
 }
 
-export default Rootnavigation
+export default rootnavigation
+
 
 const styles = StyleSheet.create({})
