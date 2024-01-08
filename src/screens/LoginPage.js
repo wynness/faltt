@@ -9,22 +9,22 @@ import { StyleSheet,
   
   import react, {useState} from 'react';
   
-  import Load from '../components/Load';
+  import {Load,CustomTextInput,CustomButton} from '../components/';
   
     const LoginPage = ({navigation}) => {
   
-    const[welcome, setWelcome] = useState("")
+    const[Email, setEmail] = useState("")
     
-    const[goodbye, setGoodbye] = useState("")
+    const[Password, setPassword] = useState("")
   
     const[result, setResult] = useState("")
   
     const [isLoading, setisLoading] = useState(false) // JS Boolean yapısı oluşturduk.(lambayı aç-kapa yaptıran anahtar gibi düşünebiliriz.)
       
     
-    console.log(welcome)
-    console.log(goodbye)
-    console.log(isLoading)
+    // console.log(Email)
+    // console.log(Password)
+    // console.log(isLoading)
     return (
       <View style={styles.container}>
         <Text style={styles.hi}>Hi bro {result} </Text>
@@ -32,15 +32,32 @@ import { StyleSheet,
           source={require('../../assets/images/safe-box_2342944.png')}
           style={styles.image}/>
         
-        <View style={styles.inputContainer}>
+        <CustomTextInput
+          title="Email"
+          isSecureText={false}
+          handleOnChangeText={setEmail}//aşağıdaki gözükecek yapıyı değiştirecek set'leyecek kod satırıdır
+          handleValue={Email}//yani text inputta gözükecek yazı burası
+          handlePlaceHolder='enter ur email'        
+        />
+        <CustomTextInput
+          title="Password"
+          isSecureText={true}
+          handleOnChangeText={setPassword}
+          handleValue={Password}
+          handlePlaceHolder='enter ur password'        
+
+        />
+        
+        
+        {/* <View style={styles.inputContainer}>
           <Text style={styles.inputBoxText}>Email</Text>
 
             <TextInput
               placeholder='enter ur email'
               style={styles.TextInputstyles}// örneğin klavyeden sadece numara girişi yapmak için 
               // keyboardType='numeric'
-              onChangeText={setWelcome}
-              value={welcome}
+              // onChangeText={setWelcome}
+              // value={welcome}
             /> 
         </View>
         
@@ -51,28 +68,41 @@ import { StyleSheet,
               secureTextEntry={true} //password kısmını gizler 
               placeholder='enter ur password'
               style={styles.TextInputstyles}
-              onChangeText={setGoodbye}
-              value={goodbye}
+              // onChangeText={setGoodbye}
+              // value={goodbye}
             />
-        </View>
+        </View> */}
         
         
-        <Pressable
+        
+        <CustomButton
+          buttontext='Login'
+          setWidth="80%"
+          handleOnPress={()=>setisLoading(true)}
+        />
+        
+        <CustomButton
+          buttontext='Sign Up'
+          setWidth="30%"
+          handleOnPress={()=>navigation.navigate('Sign')}
+        />
+        
+        {/* <Pressable
           onPress={()=>setisLoading(true)}
           style={({pressed}) => [{
             backgroundColor: pressed? 'lightblue' : 'blue'
   
-          },styles.button]  }> 
+          },styles.button]  }>  */}
   
           {/* birden fazla style yapısı için [] ile array oluşturduk */}
           {/*{({pressed}) => bu yapı orjinaldir  */}
           {/* pressed? 'lightblue' : 'gray' bu ise bize basınca açık mavi,normalde gri renkte anlamındadır */}
       
-          <Text style={styles.buttontext}>Login</Text>
+          {/* <Text style={styles.buttontext}>Login</Text>
         
-        </Pressable>
+        </Pressable> */}
 
-        <Pressable
+        {/* <Pressable
           onPress={()=>
             
             navigation.navigate('Sign')}
@@ -80,17 +110,17 @@ import { StyleSheet,
           style={({pressed}) => [{
             backgroundColor: pressed? 'lightgray' : 'gray',
             marginTop:50,
-          },styles.signupbutton]  }> 
+          },styles.signupbutton]  }>  */}
   
           {/* birden fazla style yapısı için [] ile array oluşturduk */}
           {/*{({pressed}) => bu yapı orjinaldir  */}
           {/* pressed? 'lightblue' : 'gray' bu ise bize basınca açık mavi,normalde gri renkte anlamındadır */}
       
-          <Text style={styles.buttontext}>Sign Up</Text>
+          {/* <Text style={styles.buttontext}>Sign Up</Text>
         
-        </Pressable>
+        </Pressable> */}
         
-          {isLoading ? <Load changeisLoading={setisLoading(false)}/> : null} 
+          {isLoading ? <Load changeisLoading={()=>setisLoading(false)}/> : null} 
           
   
       </View> //{isLoading ? <Load/> : null} Açıklama: HTML içine javascript kodu yerleştirmek için {} açıp içine yazarız.
@@ -109,30 +139,22 @@ import { StyleSheet,
       width:'80%'
     }   ,
 
-    TextInputstyles:{
-      borderBottomWidth:0.5,
-      width:'100%',
-      height:50,
-      borderRadius:10,
-      marginVertical:10,//barın altında ve üstünde boşluk bırakır
-      textAlign:'center',
-      color:'blue',
-      fontWeight:'bold'
-    },
-    button:{
-      borderWidth:1,
-      width:'80%',
-      height:50,
-      borderRadius:10,
-      alignItems:'center',
-      justifyContent:'center',
-      marginTop:20
-    },
-    buttontext:{
-      fontWeight:'bold',
-      color:'white'
+    
+    
+    // button:{
+    //   borderWidth:1,
+    //   width:'80%',
+    //   height:50,
+    //   borderRadius:10,
+    //   alignItems:'center',
+    //   justifyContent:'center',
+    //   marginTop:20
+    // },
+    // buttontext:{
+    //   fontWeight:'bold',
+    //   color:'white'
   
-    },
+    // },
     image:{
       width:100,
       height:100,
@@ -154,11 +176,7 @@ import { StyleSheet,
 
 
     },
-    inputBoxText:{
-
-      fontWeight:'bold',
-      alignSelf:'flex-start',
-    }
+   
       
     
   });
