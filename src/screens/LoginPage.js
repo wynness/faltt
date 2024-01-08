@@ -27,32 +27,40 @@ import { StyleSheet,
     console.log(isLoading)
     return (
       <View style={styles.container}>
+        <Text style={styles.hi}>Hi bro {result} </Text>
         <Image
-        source={require('../../assets/images/safe-box_2342944.png')}
-        style={styles.image}/>
-        <Text style={styles.hi}>hi {result} </Text>
-        <Text>email</Text>
-        <TextInput
-          placeholder='enter ur email'
-          style={styles.TextInputstyles}// örneğin klavyeden sadece numara girişi yapmak için 
-          // keyboardType='numeric'
-          onChangeText={setWelcome}
-          value={welcome}
-        /> 
+          source={require('../../assets/images/safe-box_2342944.png')}
+          style={styles.image}/>
         
-        <Text>get out {result}</Text>
-        <Text>password</Text>
-        <TextInput 
-          secureTextEntry={true} //password kısmını gizler 
-          placeholder='enter ur password'
-          style={styles.TextInputstyles}
-          onChangeText={setGoodbye}
-          value={goodbye}
-        />
+        <View style={styles.inputContainer}>
+          <Text style={styles.inputBoxText}>Email</Text>
+
+            <TextInput
+              placeholder='enter ur email'
+              style={styles.TextInputstyles}// örneğin klavyeden sadece numara girişi yapmak için 
+              // keyboardType='numeric'
+              onChangeText={setWelcome}
+              value={welcome}
+            /> 
+        </View>
+        
+        <View style={styles.inputContainer}> 
+          
+          <Text style={styles.inputBoxText}>Password</Text>
+            <TextInput 
+              secureTextEntry={true} //password kısmını gizler 
+              placeholder='enter ur password'
+              style={styles.TextInputstyles}
+              onChangeText={setGoodbye}
+              value={goodbye}
+            />
+        </View>
+        
+        
         <Pressable
           onPress={()=>setisLoading(true)}
           style={({pressed}) => [{
-            backgroundColor: pressed? 'lightblue' : 'gray'
+            backgroundColor: pressed? 'lightblue' : 'blue'
   
           },styles.button]  }> 
   
@@ -60,7 +68,7 @@ import { StyleSheet,
           {/*{({pressed}) => bu yapı orjinaldir  */}
           {/* pressed? 'lightblue' : 'gray' bu ise bize basınca açık mavi,normalde gri renkte anlamındadır */}
       
-          <Text style={styles.buttontext}>login</Text>
+          <Text style={styles.buttontext}>Login</Text>
         
         </Pressable>
 
@@ -70,7 +78,7 @@ import { StyleSheet,
             navigation.navigate('Sign')}
           
           style={({pressed}) => [{
-            backgroundColor: pressed? 'lightblue' : 'gray',
+            backgroundColor: pressed? 'lightgray' : 'gray',
             marginTop:50,
           },styles.signupbutton]  }> 
   
@@ -93,13 +101,17 @@ import { StyleSheet,
   const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: 'dark',
       alignItems: 'center',
       justifyContent: 'center',
-    },        
+    },  
+    inputContainer:{
+      width:'80%'
+    }   ,
+
     TextInputstyles:{
-      borderWidth: 1,
-      width:'80%',
+      borderBottomWidth:0.5,
+      width:'100%',
       height:50,
       borderRadius:10,
       marginVertical:10,//barın altında ve üstünde boşluk bırakır
@@ -114,7 +126,7 @@ import { StyleSheet,
       borderRadius:10,
       alignItems:'center',
       justifyContent:'center',
-      
+      marginTop:20
     },
     buttontext:{
       fontWeight:'bold',
@@ -123,13 +135,13 @@ import { StyleSheet,
     },
     image:{
       width:100,
-      height:100
-  
+      height:100,
+      marginBottom:20
     },
     hi:{
       fontWeight:'bold',
-      fontSize:26
-  
+      fontSize:30,
+      marginBottom:20
     },
 
     signupbutton:{
@@ -141,6 +153,11 @@ import { StyleSheet,
       justifyContent:'center'
 
 
+    },
+    inputBoxText:{
+
+      fontWeight:'bold',
+      alignSelf:'flex-start',
     }
       
     
