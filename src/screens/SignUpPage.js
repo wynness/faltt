@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-
+import {CustomTextInput} from '../components'
 const SignUpPage = () => {
   return (
     <View style={styles.container}>
       <Text>SignUpPage</Text>
+      <CustomTextInput/>   
     </View>
   )
 }

@@ -12,8 +12,8 @@ const CustomTextInput = ({title,isSecureText,handleOnChangeText,handleValue,hand
           placeholder={handlePlaceHolder}
           style={styles.TextInputstyles}// örneğin klavyeden sadece numara girişi yapmak için 
           // keyboardType='numeric'
-          // onChangeText={setWelcome}
-          // value={welcome}
+          onChangeText={handleOnChangeText}
+          value={handleValue}
         /> 
     </View>
   )
@@ -28,11 +28,12 @@ const styles = StyleSheet.create({
 
       inputBoxText:{
 
-        fontWeight:'bold',
+        fontWeight:'bold', 
         alignSelf:'flex-start',
       },
       TextInputstyles:{
         borderBottomWidth:0.5,
+        borderBottomColor:'white',
         width:'100%',
         height:50,
         borderRadius:10,
