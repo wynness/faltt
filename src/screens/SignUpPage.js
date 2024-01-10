@@ -1,10 +1,11 @@
-import { StyleSheet, Text, View, SafeAreaView,Image } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView,Image, Pressable } from 'react-native'
 import React, {useState} from 'react'
 import {CustomTextInput,CustomButton} from '../components'
+// import { useNavigation } from '@react-navigation/native'
 
 
 
-const SignUpPage = () => {
+const SignUpPage = ({navigation}) => {
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -64,10 +65,24 @@ const SignUpPage = () => {
             
             />
 
+
+            <Pressable onPress={()=>navigation.navigate("Log")}>
+
+              <Text style={{fontWeight:'bold'}}>Already have account? Login</Text>
+
+            </Pressable>
+
+
+
           </View>
+
+
+          
           
         {/* </View> */}
       </SafeAreaView>
+
+
   )
 }
 
@@ -100,8 +115,12 @@ const styles = StyleSheet.create({
     
   },
   TextUp:{
-  flex:2
-  
+  // borderWidth:1,
+  alignItems:'center',
+  flex:1,
+  paddingTop:50
+
+    
   
   
   
@@ -112,7 +131,7 @@ const styles = StyleSheet.create({
     flex:2,
     // borderWidth:1,
 
-    paddingVertical:20, // belirlenen flex ile borderwidht ile net görülür. üst barından içe doğru boşluk verir. 
+    paddingVertical:50, // belirlenen flex ile borderwidht ile net görülür. üst barından içe doğru boşluk verir. 
     width:'100%',
     alignItems:'center',
     justifyContent:'space-between' //text boxların arasına boşluk koyar.
@@ -123,18 +142,25 @@ const styles = StyleSheet.create({
 
   },
   ButtonOptions:{
+    borderWidth:1,
     width:'100%',
-    flex:2,
-    alignItems:'center'
-
+    flex:2.5,
+    alignItems:'center',
+    // justifyContent:'space-around'
+    // justifyContent:'space-evenly'
+    justifyContent:'space-between'
 
 
 
   },
   image:{
+    
     width:100,
     height:100,
-    marginBottom:20
+    marginBottom:20,
+    alignItems:'center',
+    
+
   },
 
 })
