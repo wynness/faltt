@@ -17,7 +17,7 @@ import { StyleSheet,
     
     const[Password, setPassword] = useState("")
   
-    const[result, setResult] = useState("")
+    // const[result, setResult] = useState("")
   
     const [isLoading, setisLoading] = useState(false) // JS Boolean yapısı oluşturduk.(lambayı aç-kapa yaptıran anahtar gibi düşünebiliriz.)
       
@@ -27,7 +27,9 @@ import { StyleSheet,
     // console.log(isLoading)
     return (
       <View style={styles.container}>
-        <Text style={styles.hi}>Hi bro {result} </Text>
+        {/* <Text style={styles.hi}>Hi bro //{result} </Text> */}
+        <Text style={styles.hi}>Hi bro</Text>
+        
         <Image
           source={require('../../assets/images/safe-box_2342944.png')}
           style={styles.image}/>
