@@ -4,11 +4,13 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import AuthStack from './authStack';
 import UserStack from './userStack';
-
+import { useSelector } from 'react-redux';
 
 const rootnavigation = () => {
-  
-        const isAuth = false
+
+        const {isAuth} = useSelector((state)=>state.user)
+        //isAuth userSlice.js içinde false durumundadır.setload kısmındaki if-else yapısına göre değişiklik gösterecektir.
+        // const isAuth = false //yukarıdaki kod satırını aktif hale getirdik.
   
   
     return (

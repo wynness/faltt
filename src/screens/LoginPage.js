@@ -11,17 +11,36 @@ import { StyleSheet,
   
   import {Load,CustomTextInput,CustomButton} from '../components/';
   
-    const LoginPage = ({navigation}) => {
-  
-    const[Email, setEmail] = useState("")
+  import { useSelector,useDispatch } from 'react-redux';
     
-    const[Password, setPassword] = useState("")
+  import { setEmail, setPassword, setisLoading,setLog } from '../redux/userSlice'; //useDispatch yapısından veri göndermek için import ederiz.
+  //deneme için setlog import edildi.
   
-    // const[result, setResult] = useState("")
   
-    const [isLoading, setisLoading] = useState(false) // JS Boolean yapısı oluşturduk.(lambayı aç-kapa yaptıran anahtar gibi düşünebiliriz.)
-      
+  
+  
+  const LoginPage = ({navigation}) => {
+  
+  // const[Email, setEmail] = useState("")
     
+  // const[Password, setPassword] = useState("")
+  
+  //   // const[result, setResult] = useState("")
+  
+  // const [isLoading, setisLoading] = useState(false) // JS Boolean yapısı oluşturduk.(lambayı aç-kapa yaptıran anahtar gibi düşünebiliriz.)
+  
+  //userSlice.js içerisindeki verilerin okunması
+  const {Email, Password, isLoading}=useSelector((state)=>state.user)
+
+  //verilerin okunması kontrol etmek için;
+  
+  console.log("Email: ", Email)
+  console.log("Password: ", Password)
+  console.log("Loading: ", isLoading)
+  
+
+  //userSlice.js içerisindeki yapılarını kullanma veya veri gönderme
+  const dispatch =useDispatch() //dispatch ismini vermemiz prosedür gereği aynı yapıda anlaşılır olması için.
     // console.log(Email)
     // console.log(Password)
     // console.log(isLoading)
@@ -37,14 +56,16 @@ import { StyleSheet,
         <CustomTextInput
           title="Email"
           isSecureText={false}
-          handleOnChangeText={setEmail}//aşağıdaki gözükecek yapıyı değiştirecek set'leyecek kod satırıdır
+          handleOnChangeText={(email)=>dispatch(setEmail(email))}//aşağıdaki yapı usestate içindir. useSlice yapısına geçişte verileri set etmek için dispatch yapmamız gereklidir.'(email)' bu isimlendirmeyi yapmamız gereklidir.
+          // handleOnChangeText={setEmail}//aşağıdaki gözükecek yapıyı değiştirecek set'leyecek kod satırıdır
           handleValue={Email}//yani text inputta gözükecek yazı burası
           handlePlaceHolder='enter ur email'        
         />
         <CustomTextInput
           title="Password"
           isSecureText={true}
-          handleOnChangeText={setPassword}
+          handleOnChangeText={(password)=>dispatch(setPassword(password))}//() içi isimlendirmeler yapılmalıdır."(password)" isimlendirmesini biz kullandık. 
+          // handleOnChangeText={setPassword}
           handleValue={Password}
           handlePlaceHolder='enter ur password'        
 
@@ -80,7 +101,11 @@ import { StyleSheet,
         <CustomButton
           buttontext='Login'
           setWidth="80%"
-          handleOnPress={()=>setisLoading(true)}
+          // handleOnPress={()=>dispatch(setisLoading(true))}
+          //deneme için yukarıdaki kod satırını değiştireceğiz.
+
+          handleOnPress={()=>dispatch(setLog())}
+          // handleOnPress={()=>setisLoading(true)}
         />
         
         <CustomButton
@@ -121,10 +146,11 @@ import { StyleSheet,
           {/* <Text style={styles.buttontext}>Sign Up</Text>
         
         </Pressable> */}
-        
-          {isLoading ? <Load changeisLoading={()=>setisLoading(false)}/> : null} 
           
-  
+          {/* {isLoading ? <Load changeisLoading={()=>setisLoading(false)}/> : null}  */}
+          {/* yukarıdaki yapı usestate için geçerliydi. bunu useSlice yapısına dönüştürmek için dispatch yapısı ile set etmeliyiz. */}
+          {/* çünkü logine basınca true olur loading sayfasınageçer fakat çarpıya basıncageri dönmez. */}
+          {isLoading ? <Load changeisLoading={()=>dispatch(setisLoading(false))}/> : null}
       </View> //{isLoading ? <Load/> : null} Açıklama: HTML içine javascript kodu yerleştirmek için {} açıp içine yazarız.
     );
   }
