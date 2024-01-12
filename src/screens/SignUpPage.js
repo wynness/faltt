@@ -91,7 +91,7 @@ export default SignUpPage
 const styles = StyleSheet.create({
   container:{
     flex: 1,  
-    backgroundColor:'tomato',
+    backgroundColor:'pink',
     justifyContent:'center',
     alignItems: 'center',
 
@@ -115,9 +115,11 @@ const styles = StyleSheet.create({
     
   },
   TextUp:{
+  flex:1.7,
   // borderWidth:1,
+  width:'100%', 
   alignItems:'center',
-  flex:1,
+  justifyContent:'center',
   paddingTop:50
 
     
@@ -128,10 +130,10 @@ const styles = StyleSheet.create({
 
 
   CustomTContainer:{
-    flex:2,
+    flex:1.7,
     // borderWidth:1,
 
-    paddingVertical:50, // belirlenen flex ile borderwidht ile net görülür. üst barından içe doğru boşluk verir. 
+    // paddingVertical:100, // belirlenen flex ile borderwidht ile net görülür. üst barından içe doğru boşluk verir. 
     width:'100%',
     alignItems:'center',
     justifyContent:'space-between' //text boxların arasına boşluk koyar.
@@ -142,13 +144,14 @@ const styles = StyleSheet.create({
 
   },
   ButtonOptions:{
-    borderWidth:1,
+    // borderWidth:1,
     width:'100%',
     flex:2.5,
     alignItems:'center',
     // justifyContent:'space-around'
     // justifyContent:'space-evenly'
-    justifyContent:'space-between'
+    justifyContent:'space-between',
+    paddingTop:70
 
 
 
