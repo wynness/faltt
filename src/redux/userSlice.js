@@ -1,5 +1,39 @@
-import { createSlice } from "@reduxjs/toolkit";
 
+//createAsyncThunk import edicez.(bir function çağırdığımızda cevap gelme süresince beklememizi sağlar.)
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+//firebase auth sitesinden authentication kullanımından mevcut kullanıcılarda oturum açma bölümündeki kodlardan gerekli yapıları çektik.
+import{getAuth, signInWithEmailAndPassword} from "firebase/auth"
+
+
+//şimdi AsyncThunk'ın kullanımını görmek için fucntion oluşturacağız.
+//bu kısımda oluşturmamızın sebebi aşağıda export create slice ile oluşturduğumuz reducersların içine ekstra reducers eklemeyi göstereceğiz.
+
+// export const login = createAsyncThunk('user/login', async({username,password})=>{
+
+//     try {
+//         const auth=getAuth();
+//         const userCredential=await signInWithEmailAndPassword(auth, username,password)
+
+//         const user=userCredential.user;
+//         const token=user.stsTokenManager.accessToken;
+
+//         const userData={
+//             token,
+//             user:user,
+
+
+//         }
+
+//         return userData
+
+//     } catch (error) {
+        
+//         throw error
+//     }
+
+
+
+// })
 
 const initialState ={
 
