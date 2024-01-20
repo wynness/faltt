@@ -5,6 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import AuthStack from './authStack';
 import UserStack from './userStack';
 import { useSelector } from 'react-redux';
+import app from '../../firebaseConfig';
 
 const rootnavigation = () => {
 
